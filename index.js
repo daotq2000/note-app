@@ -59,8 +59,9 @@ function showMenu(elem) {
 
 function deleteNote(noteId) {
 
-    fetch(`${COMMON_NOTE_URI}?id=${noteId}`, {
+    fetch(`${COMMON_NOTE_URI}}`, {
         method: 'DELETE',
+        body: JSON.stringify({id:noteId})
     })
         .then(response => response.json())
         .then(response => alert(response))
