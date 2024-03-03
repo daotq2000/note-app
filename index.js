@@ -36,7 +36,7 @@ const showNotes = () => {
                                     <i onclick=showMenu(this) class="fa-solid fa-ellipsis iconel"></i>
                                     <ul class="menu">
                                         <li onclick="editNote(${index},'${note.id}','${note.title}','${note.description}')"><i class="fa-light fa-pen"></i>Edit</li>
-                                        <li onclick="deleteNote(${index})"><i class="fa-duotone fa-trash"></i>Delete</li>
+                                        <li onclick="deleteNote(${index},'${note.id}')"><i class="fa-duotone fa-trash"></i>Delete</li>
                                     </ul>
                                 </div>
                             </div>
@@ -57,14 +57,17 @@ function showMenu(elem) {
     // console.log(elem)
 }
 
-function deleteNote(noteId) {
+function deleteNote(index,noteId) {
 
     fetch(COMMON_NOTE_URI, {
         method: 'DELETE',
         body: JSON.stringify({id:noteId})
     })
         .then(response => response.json())
-        .then(response => alert(response))
+        .then(response => {
+            alert(response);
+            showNotes();
+        })
 }
 
 function editNote(index, noteId, title, description) {
