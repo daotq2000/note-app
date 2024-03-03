@@ -59,7 +59,7 @@ function showMenu(elem) {
 
 function deleteNote(noteId) {
 
-    fetch(`${COMMON_NOTE_URI}}`, {
+    fetch(COMMON_NOTE_URI, {
         method: 'DELETE',
         body: JSON.stringify({id:noteId})
     })
